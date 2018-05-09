@@ -1,0 +1,2 @@
+sitecore/login/default.aspx
+sitecore/shell/sitecore.version.xml

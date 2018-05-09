@@ -1,0 +1,3 @@
+mediawiki/
+MEDIAWIKI/
+Mediawiki/

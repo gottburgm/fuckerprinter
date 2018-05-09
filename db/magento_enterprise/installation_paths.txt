@@ -1,0 +1,3 @@
+magento_enterprise/
+MAGENTO_ENTERPRISE/
+Magento_enterprise/

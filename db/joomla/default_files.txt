@@ -1,0 +1,3 @@
+index.php?format=feed&type=rss
+index.php?format=feed&type=atom
+feed/rss.html

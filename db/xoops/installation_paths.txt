@@ -1,0 +1,3 @@
+xoops/
+XOOPS/
+Xoops/

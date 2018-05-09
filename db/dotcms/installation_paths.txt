@@ -1,0 +1,3 @@
+dotcms/
+DOTCMS/
+Dotcms/
