@@ -86,7 +86,7 @@ sub showList {
         
 };
 
-    opendir(DIRECTORY, "./db/") or die error("couldn't open directory: ./db (" . $! . ")");
+    opendir(DIRECTORY, "./data/") or die error("couldn't open directory: ./data (" . $! . ")");
     while(my $service_directory = readdir(DIRECTORY)) {
         next if($service_directory eq '.' || $service_directory eq '..');
         push(@services_names, uc($service_directory));
@@ -187,8 +187,7 @@ sub buildRequest {
 
 sub fingerprint {
     my $browser = 0;
-    my $default_files_list = 'db/typo3/default_files.txt';
-    my $json_requests_file = 'db/typo3/requests.json';
+    my $identifications_file = 'data/identifications.json';
     
     my $services_inline = 0; # Command Argument : service
     my $proxy = 0;           # Command Argument : proxy
@@ -205,6 +204,7 @@ sub fingerprint {
     my @services = ();
     my @urls = ();
     
+    my $identifications_data = {};
     my $results_data = {};
     
     GetOptions(
@@ -234,6 +234,12 @@ sub fingerprint {
         push(@urls, read_file($urls_file, 1));
     }
     
+    if(-f $identifications_file) {
+        $identifications_data = json_file_to_perl($identifications_file);
+    } else {
+        die error("Missing identifications file: $identifications_file");
+    }
+    
     URLS: foreach my $url (@urls) {
         $url .= '/' if(substr($url, -1) ne '/');
 
@@ -247,10 +253,10 @@ sub fingerprint {
                 $browser = buildRequester($timeout, $useragent, $cookie_string, $proxy);
     
                 ### Files & variables
-                my $installation_paths_list = "$service_directory/installation_paths.txt";
-                my $default_files_list = "$service_directory/default_files.txt";
-                my $json_requests_file = "$service_directory/requests.json";
-                my $json_regexes_file = "$service_directory/regexes.json";
+                my $install_paths_list = "$service_directory/install_paths.txt";
+                my $default_files_list = "$service_directory/lists/default_files.txt";
+                my $hash_files_requests_file = "$service_directory/requests/hash_files_fingerprint.json";
+                my $regexes_file = "$service_directory/regexes.json";
                 
                 my @installation_paths = ();
                 my @default_files_paths = ();
@@ -260,10 +266,10 @@ sub fingerprint {
                 my $hash_files_requests_data = {};
                 my $regexes_data = {};
                 
-                if(-f $installation_paths_list) {
-                    push(@installation_paths, read_file($installation_paths_list, 1));
+                if(-f $install_paths_list) {
+                    push(@installation_paths, read_file($install_paths_list, 1));
                 } else {
-                    die error("Couldn't open installation paths list file: $installation_paths_list");
+                    die error("Couldn't open installation paths list file: $install_paths_list");
                 }
                 
                 if(-f $default_files_list) {
@@ -278,19 +284,22 @@ sub fingerprint {
                     die error("Couldn't open default files list file: $default_files_list");
                 }
                 
-                if(-f $json_regexes_file) {
-                    $regexes_data = json_file_to_perl($json_regexes_file);
+                if(-f $regexes_file) {
+                    $regexes_data = json_file_to_perl($regexes_file);
                 } else {
-                    die error("Couldn't open JSON regexes file: $json_regexes_file");
+                    die error("Couldn't open JSON regexes file: $regexes_file");
                 }
     
                 if($hash_check) {
-                    if(-f $json_requests_file) {
-                        $hash_files_requests_data = json_file_to_perl($json_requests_file);
+                    if(-f $hash_files_requests_file) {
+                        $hash_files_requests_data = json_file_to_perl($hash_files_requests_file);
                     } else {
-                        die error("Couldn't open JSON requests file: $json_requests_file");
+                        die error("Couldn't open JSON requests file: $hash_files_requests_file");
                     }
                 }
+                
+                ### Identifications from index response
+                $results_data->{$url} = services_identifications($browser, $identifications_data, $url);
                 
                 ### Default files fingerprint
                 $results_data->{$url}->{lc($service_name)} = default_files_fingerprint($browser, $default_files_requests_data, $regexes_data, $url);
@@ -323,6 +332,42 @@ sub fingerprint {
     }
 }
 
+sub services_identifications {
+    my ( $browser, $identifications_data, $url ) = @_;
+    
+    info("Sending a GET request on: " . color("cyan") . $url . " to run identifications tests on the response ...");
+    my $request = buildRequest($url, 'GET');
+    my $response = $browser->request($request);
+    displayResponse($response) if($debug);
+    
+    my $results = {};
+    
+    foreach my $service_name (sort keys %{ $identifications_data }) {
+        foreach my $detection_type (sort keys %{ $identifications_data->{$service_name} }) {
+            if($detection_type =~ /^VERSIONS?$/i) {
+                foreach my $match_string (@{ $identifications_data->{$service_name}->{$detection_type}->{MATCHES} }) {
+                    push(@{ $results->{$service_name}->{matches}->{$response->request->uri} }, $match_string) if($response->content =~ /$match_string/i || $response->decoded_content =~ /$match_string/i);
+                }
+            } elsif($detection_type =~ /^HEADERS?/i) {
+                foreach my $header_name (keys %{ $identifications_data->{$service_name}->{$detection_type}->{HEADERS}) {
+                    if($response->header($header_name)) {
+                        my @header_values = ();
+                        push(@header_values, $response->header($header_name));
+                        
+                        foreach my $header_value (@header_values) {
+                            foreach my $match_string (@{ $identifications_data->{$service_name}->{$detection_type}->{HEADERS}->{$header_name} }) {
+                                push(@{ $results->{$service_name}->{matches}->{$response->request->uri}->{headers}->{"$header_name:$header_value"}, $match_string) if($header_value =~ /$match_string/i);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    return $results;
+}
+_
 sub default_files_fingerprint {
     my ( $browser, $requests_data, $regexes_data, $url) = @_;
     
@@ -337,7 +382,6 @@ sub default_files_fingerprint {
         info($requests_data->{$file}->{TEXT}) if($requests_data->{$file}->{TEXT});
         my $request = buildRequest($request_url, $method, 0, 0);
         my $response = $browser->request($request);
-        
         displayResponse($response) if($debug);
         
         foreach my $regex_type (keys %{ $regexes_data }) {

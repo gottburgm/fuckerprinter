@@ -1,3 +1,0 @@
-cms/
-typo3/
-TYPO3/
