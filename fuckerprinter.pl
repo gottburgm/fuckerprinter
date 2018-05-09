@@ -258,7 +258,6 @@ sub fingerprint {
                 ### Data
                 my $default_files_requests_data = {};
                 my $hash_files_requests_data = {};
-                my $requests_data = {};
                 my $regexes_data = {};
                 
                 if(-f $installation_paths_list) {
@@ -271,7 +270,7 @@ sub fingerprint {
                     push(@default_files_paths, read_file($default_files_list, 1));
                     
                     foreach my $default_file_path (@default_files_paths) {
-                        $default_files_requests_data->{$default_file_path}->{TEXT} = 'Requesting TYPO3 Default File: ' . $default_file_path;
+                        $default_files_requests_data->{$default_file_path}->{TEXT} = 'Requesting ' . uc($service_name) . ' Default File: ' . $default_file_path;
                         $default_files_requests_data->{$default_file_path}->{METHOD} = 'GET';
                         $default_files_requests_data->{$default_file_path}->{PATH} = $default_file_path;
                     }
@@ -287,7 +286,7 @@ sub fingerprint {
     
                 if($hash_check) {
                     if(-f $json_requests_file) {
-                        $requests_data = json_file_to_perl($json_requests_file);
+                        $hash_files_requests_data = json_file_to_perl($json_requests_file);
                     } else {
                         die error("Couldn't open JSON requests file: $json_requests_file");
                     }
@@ -303,7 +302,7 @@ sub fingerprint {
                 
                 if($results_data->{$url}->{lc($service_name)}->{versions}) {
                     my $versions = $results_data->{$url}->{lc($service_name)}->{versions};
-                    result('[' . color("yellow") . $service_name . color("yellow") . ']' . " Version(s) found for: $url " . color("yellow") . '(' . color("red") . $versions . color("yellow") . ')');
+                    result(color("yellow") . "\t[" . color("red") . uc($service_name) . color("yellow") . ']' . color("blue") . " version(s) " . color("yellow") . '[' . color("red") . $versions . color("yellow") . ']' . color("blue") . " found for: " . color("cyan") . $url);
                     
                     foreach my $data_type (sort keys %{ $results_data->{$url}->{lc($service_name)} }) {
                         next if($data_type eq "versions" || !(0+@{ $results_data->{$url}->{lc($service_name)}->{$data_type} }));
@@ -390,7 +389,7 @@ sub hash_files_fingerprint {
                     my $response_hash = md5_hex($response->content);
                     result("File found: " . $response->request->uri . color("blue") . " | Hash: " . color("yellow") . $response_hash);
                     
-                    if(0+@{ $requests_data->{$directory}->{$path}->{HASHES}->{$response_hash} }) {
+                    if(defined($requests_data->{$directory}->{$path}->{HASHES}->{$response_hash})) {
                         $versions = join(',', @{ $requests_data->{$directory}->{$path}->{HASHES}->{$response_hash} });
                         return $versions;
                     } else {
@@ -497,12 +496,10 @@ sub warning {
     print color("white") . "[" . color("yellow") . "!" . color("white") . "]" . color("yellow") . " WARNING" . color("white") . ": " . color("blue") . "$text\n";
 }
 
-
 sub result {
     my ( $text ) = @_;
-    print color("green") . "\t\t[+] " . color("blue") . " $text\n";
+    print color("white") . '[' . color("green") . '+' . color("white") . ']' . color("green") . " SUCCESS" . color("white") . ':' . color("blue") . " $text\n\n";
 }
-
 
 sub error {
     my ( $text ) = @_;

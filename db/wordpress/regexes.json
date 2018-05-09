@@ -1,0 +1,1 @@
+{"PLUGINS":["\\/wp-content\\/plugins\\/([^\\/]*)"],"THEMES":["\\/wp-content\\/themes\\/([^\\/]*)"],"EXTENSIONS":[],"TEMPLATES":[],"MODULES":[],"VERSIONS":["<br />\\s*Version ([?\\.\\d]*)\\s*</h1>","v=(\\d[\\.\\d]*)</generator>","version=\"(\\d[\\.\\d]*)\">WordPress</generator>","v=(\\d[\\.\\d]*)\" />\\s*<items>"]}
