@@ -1,0 +1,2 @@
+include/images/vtigercrm_icon.ico
+themes/images/vtigercrm_icon.ico

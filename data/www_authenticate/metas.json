@@ -1,0 +1,1 @@
+{"NAME":"WWW-Authenticate","WEBSITE":"","DESCRIPTION":"This plugin identifies the WWW-Authenticate HTTP header and extracts the authentication method and realm."}

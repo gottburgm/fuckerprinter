@@ -1,0 +1,2 @@
+phpgwapi/templates/idots/images/favicon.ico
+phpgwapi/templates/idots/images/password.png

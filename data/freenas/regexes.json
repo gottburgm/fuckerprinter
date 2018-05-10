@@ -1,0 +1,1 @@
+{"EXTENSIONS":[],"TEMPLATES":[],"PLUGINS":[],"THEMES":[],"VERSIONS":["<div id=\"login\" data-dojo-type=\"dijit\\\\.Dialog\" data-dojo-props=\"title: 'Welcome to FreeNAS&trade; ([^']+)'\">","<div id=\"login\" dojoType=\"dijit\\\\.Dialog\" title=\"Welcome to FreeNAS ([^\\\\s]+)\">"],"MODULES":[]}

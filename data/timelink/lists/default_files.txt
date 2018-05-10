@@ -1,0 +1,1 @@
+images/login-panel-back.png

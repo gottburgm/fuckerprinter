@@ -1,0 +1,5 @@
+404.html
+422.html
+500.html
+doesnotexist
+images/rails.png

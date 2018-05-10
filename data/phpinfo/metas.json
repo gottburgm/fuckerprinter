@@ -1,0 +1,1 @@
+{"NAME":"phpinfo","DESCRIPTION":"This plugin detects instances of phpinfo() results and extracts the operating system, PHP version, document root and remote cpanel credentials.","WEBSITE":""}

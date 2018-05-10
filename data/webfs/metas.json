@@ -1,0 +1,1 @@
+{"NAME":"webfs","DESCRIPTION":"This is a simple http server for mostly static content.  You can use it to serve the content of a ftp server via http for example.","WEBSITE":"http://linux.bytesex.org/misc/webfs.html"}

@@ -1,6 +1,0 @@
-phpmyadmin/Documentation.txt
-phpmyadmin/Documentation.html
-phpmyadmin/README
-phpmyadmin/translators.html
-phpmyadmin/js/messages.php
-typo3conf/ext/phpmyadmin/ChangeLog.txt

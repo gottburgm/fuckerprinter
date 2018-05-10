@@ -1,0 +1,1 @@
+{"EXTENSIONS":[],"PLUGINS":[],"TEMPLATES":[],"THEMES":[],"MODULES":[],"VERSIONS":["<h1>BEA WebLogic Server ([^\\\\s]+)&#153;<\\\\","^WebLogic( WebLogic)?( Server)? (.+)  [\\\\d]{2}\\\\","^WebLogic WebLogic (Temporary .+) [\\\\d]{2}\\\\","^WebLogic Server (.+) [A-Z][a-z]{2} [A-Z][a-z]{2} [\\\\d]{1,2} [\\\\d]{2}:[\\\\d]{2}:[\\\\d]{2}"]}

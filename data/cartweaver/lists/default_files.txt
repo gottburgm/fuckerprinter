@@ -1,0 +1,2 @@
+images/cartweaver80x15.gif
+images/cartweaver88x31.gif

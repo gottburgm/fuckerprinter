@@ -1,0 +1,1 @@
+{"MODULES":[],"VERSIONS":["if\\\\(\\\\!App\\\\.data\\\\) \\\\{ App\\\\.data = \\\\{\\\\}; \\\\}\\\\s+App\\\\.data\\\\.quick_search_url = \"[^\"]+\";\\\\s+App\\\\.data\\\\.ac_version = \"([^\"]+)\";"],"THEMES":[],"TEMPLATES":[],"PLUGINS":[],"EXTENSIONS":[]}

@@ -1,0 +1,1 @@
+{"NAME":"X-Backend","WEBSITE":"","DESCRIPTION":"This plugin identifies and extracts the value for X-Backend, X-Backend-Server, X-BackendHost and X-Backend-Host from the HTTP headers."}

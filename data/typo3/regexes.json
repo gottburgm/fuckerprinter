@@ -1,0 +1,29 @@
+{
+  "THEMES": [],
+  "EXTENSIONS": [
+    "(?:[a-zA-Z0-9\\/\\\\_\\-\\.\\:]+)?\\/(?:sysext\\/|ext\\/)([^\\\"'><\\s]*)"
+  ],
+  "VERSIONS": [
+    "\\* Version (\\d[\\.\\d]*)?",
+    "RELEASE NOTES FOR TYPO3 (\\d[\\.\\d]*)?",
+    "IMPROVEMENTS between TYPO3 \\d\\.\\d and (\\d[\\.\\d]*)?",
+    "IMPROVEMENTS in TYPO3 (\\d[\\.\\d]*)?",
+    "Raised version to (\\d[\\.\\d]*)?",
+    "Release of TYPO3 (\\d[\\.\\d]*)?",
+    "version=\\\"(\\d[\\.\\d]*)\\\">TYPO3<",
+    "TYPO3 (\\d[.\\d]*)?",
+    "http:\\/\\/wiki\\.typo3\\.org\\/TYPO3_(\\d[\\.\\d]*)",
+    "TYPO3\\s*CMS\\s*(\\d[\\.\\d]*)(?:\\s*-\\s*WHAT\\27S\\s*NEW)?",
+    "define\\([\\\"]TYPO3_version[\\\"],\\s*[\\\"](.*?)[\\\"]",
+    "TYPO3?_VERSION\\s*=\\s*[\\\"](.*?)[\\\"]",
+    "Raised version to (\\d[\\.\\d]*)",
+    "Raised version to (\\d[\\.\\d]*)",
+    "IMPROVEMENTS in TYPO3 (\\d[\\.\\d]*)",
+    "IMPROVEMENTS between TYPO3 \\d\\.\\d and (\\d[\\.\\d]*)",
+    "RELEASE NOTES FOR TYPO3 (\\d[\\.\\d]*)",
+    "\\* Version (\\d.\\d\\d?.\\d)"
+  ],
+  "TEMPLATES": [],
+  "PLUGINS": [],
+  "MODULES": []
+}

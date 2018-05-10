@@ -1,0 +1,1 @@
+{"WEBSITE":"http://cachelogic.net/","DESCRIPTION":"Expired Domains Script runs daily and updates the database with the latest expiring domains. Requires: Unix Host, PHP5, MYSQL5, CURL Enabled, Cron, Support for the zip extension in PHP.","NAME":"Cachelogic-Expired-Domains-Script"}

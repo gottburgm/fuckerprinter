@@ -1,0 +1,4 @@
+img/head-linux.jpg
+img/head-macosx.gif
+img/head-solaris.gif
+img/head-windows.gif

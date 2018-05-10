@@ -1,0 +1,1 @@
+{"WEBSITE":"http://en.wikipedia.org/wiki/Microsoft_Office_XML_formats","DESCRIPTION":"This module detects instances of Microsoft Office documents saved as HTML and attempts to extract the user name, company name and office version.","NAME":"Microsoft-Office-XML"}

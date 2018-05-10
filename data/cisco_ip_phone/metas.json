@@ -1,0 +1,1 @@
+{"WEBSITE":"http://www.cisco.com/en/US/products/sw/voicesw/index.html","DESCRIPTION":"This plugin identifies Cisco IP phones and extracts the internal hostname which is also the device's MAC adress prefixed with 'SEP'","NAME":"Cisco-IP-Phone"}

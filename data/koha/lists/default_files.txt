@@ -1,0 +1,2 @@
+intranet-tmpl/prog/en/includes/favicon.ico
+opac-tmpl/prog/en/includes/favicon.ico

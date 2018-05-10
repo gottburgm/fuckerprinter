@@ -244,7 +244,7 @@ sub fingerprint {
         $url .= '/' if(substr($url, -1) ne '/');
 
         foreach my $service_name (@services) {
-            my $service_directory = "db/" . lc($service_name);
+            my $service_directory = "data/" . lc($service_name);
 
             if(-d $service_directory) {
                 info("Testing for web service: " . color("cyan") . uc($service_name) . " on: " . color("cyan") . $url);
@@ -253,7 +253,7 @@ sub fingerprint {
                 $browser = buildRequester($timeout, $useragent, $cookie_string, $proxy);
     
                 ### Files & variables
-                my $install_paths_list = "$service_directory/install_paths.txt";
+                my $install_paths_list = "$service_directory/lists/install_paths.txt";
                 my $default_files_list = "$service_directory/lists/default_files.txt";
                 my $hash_files_requests_file = "$service_directory/requests/hash_files_fingerprint.json";
                 my $regexes_file = "$service_directory/regexes.json";
@@ -344,19 +344,19 @@ sub services_identifications {
     
     foreach my $service_name (sort keys %{ $identifications_data }) {
         foreach my $detection_type (sort keys %{ $identifications_data->{$service_name} }) {
-            if($detection_type =~ /^VERSIONS?$/i) {
-                foreach my $match_string (@{ $identifications_data->{$service_name}->{$detection_type}->{MATCHES} }) {
+            if($detection_type =~ /^MATCHES$/i) {
+                foreach my $match_string (@{ $identifications_data->{$service_name}->{$detection_type} }) {
                     push(@{ $results->{$service_name}->{matches}->{$response->request->uri} }, $match_string) if($response->content =~ /$match_string/i || $response->decoded_content =~ /$match_string/i);
                 }
             } elsif($detection_type =~ /^HEADERS?/i) {
-                foreach my $header_name (keys %{ $identifications_data->{$service_name}->{$detection_type}->{HEADERS}) {
+                foreach my $header_name (keys %{ $identifications_data->{$service_name}->{$detection_type}->{HEADERS} }) {
                     if($response->header($header_name)) {
                         my @header_values = ();
                         push(@header_values, $response->header($header_name));
                         
                         foreach my $header_value (@header_values) {
                             foreach my $match_string (@{ $identifications_data->{$service_name}->{$detection_type}->{HEADERS}->{$header_name} }) {
-                                push(@{ $results->{$service_name}->{matches}->{$response->request->uri}->{headers}->{"$header_name:$header_value"}, $match_string) if($header_value =~ /$match_string/i);
+                                push(@{ $results->{$service_name}->{matches}->{$response->request->uri}->{headers}->{"$header_name:$header_value"} }, $match_string) if($header_value =~ /$match_string/i);
                             }
                         }
                     }
@@ -364,10 +364,10 @@ sub services_identifications {
             }
         }
     }
-    
+
     return $results;
 }
-_
+
 sub default_files_fingerprint {
     my ( $browser, $requests_data, $regexes_data, $url) = @_;
     

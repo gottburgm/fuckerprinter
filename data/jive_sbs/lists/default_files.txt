@@ -1,0 +1,3 @@
+admin/images/jive-logo.png
+community/admin/images/jive-logo.png
+___sbsstatic___/logo-jive-darkgloss.jpg

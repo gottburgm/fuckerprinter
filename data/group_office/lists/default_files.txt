@@ -1,0 +1,1 @@
+themes/Default/images/favicon.ico

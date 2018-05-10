@@ -1,0 +1,1 @@
+{"WEBSITE":"","DESCRIPTION":"Uncommon HTTP server headers. The blacklist includes all the standard headers and many non standard but common ones. Interesting but fairly common headers should have their own plugins, eg. x-powered-by, server and x-aspnet-version. Info about headers can be found at www.http-stats.com","NAME":"UncommonHeaders"}

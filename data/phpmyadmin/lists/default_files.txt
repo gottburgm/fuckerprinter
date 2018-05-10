@@ -1,0 +1,8 @@
+favicon.ico
+phpmyadmin/Documentation.html
+phpmyadmin/Documentation.txt
+phpmyadmin/js/messages.php
+phpmyadmin/README
+phpmyadmin/translators.html
+README
+typo3conf/ext/phpmyadmin/ChangeLog.txt

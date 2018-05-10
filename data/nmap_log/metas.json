@@ -1,0 +1,1 @@
+{"WEBSITE":"http://www.insecure.org/nmap/","DESCRIPTION":"This plugin identifies nmap plain-text logs and extracts the hostname, OS, active ports and nmap version. It does not work for logs in the XML file format.","NAME":"Nmap-Log"}

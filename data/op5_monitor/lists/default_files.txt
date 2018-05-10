@@ -1,0 +1,1 @@
+monitor/application/views/themes/default/icons/16x16/favicon.ico

@@ -1,0 +1,2 @@
+TracWeb40/favicon.ico
+TutorTrac/favicon.ico

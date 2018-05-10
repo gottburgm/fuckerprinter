@@ -1,0 +1,2 @@
+_assets/img/site/favicon.ico
+favicon.ico

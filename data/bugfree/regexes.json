@@ -1,0 +1,1 @@
+{"VERSIONS":["<div id=\"loginLogo\">[\\\\s]+<img src=\"Image\\\\","<div id=\"LoginMain\">[\\\\s]+<div id=\"LoginLogo\">[\\\\s]+<span id=\"Version\">([^\\\\s^<]+)<\\\\","<span id=\"Version\"><img src=\"Image\\\\"],"MODULES":[],"THEMES":[],"TEMPLATES":[],"PLUGINS":[],"EXTENSIONS":[]}

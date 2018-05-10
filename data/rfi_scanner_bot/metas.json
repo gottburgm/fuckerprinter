@@ -1,0 +1,1 @@
+{"NAME":"RFI-Scanner-Bot","DESCRIPTION":"This plugin idenitfies instances of Remote File Include Scanner bots (aka feelscanz.pl, gmjk.pl, FeeLCoMz.pl, rfi.pl) and extracts the command and control servers, channels and passwords.","WEBSITE":""}

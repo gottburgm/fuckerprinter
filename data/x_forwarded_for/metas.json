@@ -1,0 +1,1 @@
+{"DESCRIPTION":"This plugin extracts the proxy server details from the X-Forwarded-For param of the HTTP header. X-Forwarded-For is a non-standard header introduced by the developers of the Squid proxy before the Via header was added to HTTP.","WEBSITE":"","NAME":"X-Forwarded-For"}

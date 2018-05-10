@@ -1,0 +1,2 @@
+images/rockcolor.gif
+ralogo.gif

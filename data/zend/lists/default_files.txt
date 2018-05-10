@@ -1,0 +1,2 @@
+images/logo_small.gif
+images/PoweredBy_ZF.gif

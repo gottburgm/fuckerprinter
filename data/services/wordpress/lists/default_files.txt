@@ -1,4 +1,0 @@
-readme.html
-feed/
-feed/atom/
-feed/rdf/

@@ -1,0 +1,2 @@
+images/logos/wa_logo136_white.gif
+published/common/html/res/images/logo.gif

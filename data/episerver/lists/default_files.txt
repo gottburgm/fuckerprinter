@@ -1,0 +1,3 @@
+App_Themes/Default/Images/General/LoginBackground.gif
+Util/images/EPiServerCMSLogo.png
+util/images/loginbackground.gif

@@ -1,0 +1,1 @@
+{"NAME":"Country","WEBSITE":"","DESCRIPTION":"Shows the country the IPv4 address belongs to. This uses the GeoIP IP2Country database from http://software77.net/geo-ip/. Instructions on updating the database are in the plugin comments."}

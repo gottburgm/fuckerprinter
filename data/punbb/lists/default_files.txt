@@ -1,0 +1,2 @@
+docs/install.html
+img/smilies/sad.png

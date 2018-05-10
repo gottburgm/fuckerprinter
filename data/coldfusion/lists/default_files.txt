@@ -1,0 +1,2 @@
+CFIDE/administrator/images/AdminColdFusionLogo.gif
+CFIDE/administrator/images/loginbackground.jpg

@@ -1,0 +1,1 @@
+{"NAME":"Wiseguy","WEBSITE":"https://code.google.com/p/msolo/wiki/wiseguy","DESCRIPTION":"Wiseguy is a WSGI compliant FastCGI server built on top of python-fastcgi and the Open Market FCGI library. It contains a few patches to deal with various bad behaviors under high load."}

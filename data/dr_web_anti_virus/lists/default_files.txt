@@ -1,0 +1,2 @@
+avdesk/includes/system/templates/images/logo_en.png
+avdesk/includes/system/templates/images/logo_ru.png

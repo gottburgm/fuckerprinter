@@ -1,0 +1,1 @@
+{"WEBSITE":"","DESCRIPTION":"This plugin retrieves the X-XSS-Protection value from the HTTP header. - More Info: http://msdn.microsoft.com/en-us/library/cc288472%28VS.85%29.aspx","NAME":"X-XSS-Protection"}

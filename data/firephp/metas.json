@@ -1,0 +1,1 @@
+{"NAME":"FirePHP","WEBSITE":"http://www.firephp.org/","DESCRIPTION":"FirePHP enables you to log to your Firebug Console using a simple PHP method call. FirePHP works by sending JSON encoded debug data in the response headers instead of the page content."}

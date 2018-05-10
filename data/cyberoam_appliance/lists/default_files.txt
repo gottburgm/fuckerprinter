@@ -1,0 +1,2 @@
+images/loginbox_left_logo.jpg
+images/session_ex.jpg

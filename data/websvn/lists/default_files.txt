@@ -1,0 +1,2 @@
+templates/BlueGrey/images/favicon.ico
+templates/BlueGrey/images/websvn.png
