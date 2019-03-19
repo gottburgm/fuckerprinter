@@ -1,4 +1,4 @@
-### TYPO3 Fingerprinting Script
+### Multiple Fingerprinting Script
 
   #### Arguments
 
